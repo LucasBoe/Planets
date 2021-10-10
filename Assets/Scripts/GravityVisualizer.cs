@@ -3,23 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityVisualizer : MonoBehaviour
+public class GravityVisualizer : SingletonBehaviour<GravityVisualizer>
 {
-    public static GravityVisualizer Instance;
-
     [SerializeField] Collider2D rocket;
 
     List<Planet> inGravityOf = new List<Planet>();
     float distanceBefore = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
 
     internal void EnterGravity(Planet planet)
     {
@@ -35,8 +24,11 @@ public class GravityVisualizer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        var emit = GetComponent<ParticleSystem>().emission;
+
         if (inGravityOf.Count <= 0)
         {
+            emit.rateOverTime = Mathf.MoveTowards(emit.rateOverTime.constant, 0, 0.1f);
             distanceBefore = 0;
             return;
         }
@@ -67,7 +59,6 @@ public class GravityVisualizer : MonoBehaviour
 
             float intensity = Mathf.Clamp(distanceBefore - distanceNew, 0, 100) * 20;
 
-            var emit = GetComponent<ParticleSystem>().emission;
             emit.rateOverTime = Mathf.MoveTowards(emit.rateOverTime.constant, intensity, 0.1f);
 
             Debug.Log(intensity);

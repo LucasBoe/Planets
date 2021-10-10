@@ -8,8 +8,10 @@ public class Rocket : InitialForce
     [SerializeField] float startForce;
     [SerializeField] RocketSettings settings;
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] Transform rocketDestroyPrefab;
 
     public bool On = false;
+    public int Astronauts = 0;
 
     protected override void Start()
     {
@@ -38,5 +40,11 @@ public class Rocket : InitialForce
             transform.up = rigidbody2D.velocity.normalized;
             rigidbody2D.AddForce(Vector2.up * motorForce * Time.deltaTime);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Instantiate(rocketDestroyPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
