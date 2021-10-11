@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSelectionUI : MonoBehaviour
+public class LevelSelectionRocket : MonoBehaviour
 {
     [SerializeField] LevelUI selected;
-    [SerializeField] float rotation = 0;
+    float rotation = 0;
     Coroutine current;
 
     // Update is called once per frame
     void Update()
     {
-        if (current != null)
+        if (current != null || selected == null)
             return;
 
         if (rotation >= 180)

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelData : ScriptableObject
 {
     public string Name;
-    public int Astronauts, AtronautsMax;
+    public int Astronauts, AstronautsMax;
     public bool Finished;
     public Scene Scene;
 }
