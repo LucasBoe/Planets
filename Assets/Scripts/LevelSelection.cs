@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelection : MonoBehaviour
 {
+    [SerializeField] LevelSelectionRocket rocket;
+    [SerializeField] RectTransform rectToTranslate;
     [SerializeField] LevelUI levelUIElementPrefab;
     List<LevelData> levelDatas;
     List<LevelUI> levelUIs;
@@ -14,16 +16,18 @@ public class LevelSelection : MonoBehaviour
     void Start()
     {
         CreateUIElementsForAllLevels();
+        if (levelUIs != null && levelUIs.Count > 0)
+            rocket.selected = 0;
     }
 
     private void CreateUIElementsForAllLevels()
     {
-        var textures = Resources.LoadAll("", typeof(LevelData));
+        var lds = Resources.LoadAll("", typeof(LevelData));
 
         levelDatas = new List<LevelData>();
         levelUIs = new List<LevelUI>();
 
-        foreach (LevelData data in textures)
+        foreach (LevelData data in lds)
         {
             levelDatas.Add(data);
             levelUIs.Add(CreateLevelUIFor(data));
@@ -39,16 +43,39 @@ public class LevelSelection : MonoBehaviour
 
     internal void Fokus(LevelUI levelUI, LevelData data)
     {
-        (transform as RectTransform).anchoredPosition = new Vector2(-((levelUI.transform as RectTransform).anchoredPosition.x), 0);
+        StopAllCoroutines();
+        StartCoroutine(TranslatePositionTo(new Vector2(-((levelUI.transform as RectTransform).anchoredPosition.x) +100, 0)));
 
+        int i = 0;
         foreach (var ui in levelUIs)
         {
-            ui.SetFokused(levelUI == ui);
+            if (levelUI == ui)
+            {
+                rocket.selected = i;
+                ui.SetFokused(true);
+            } else
+            {
+                ui.SetFokused(false);
+            }
+            i++;
         }
+    }
+
+    private IEnumerator TranslatePositionTo(Vector2 target)
+    {
+        float distance = float.MaxValue;
+
+        while (distance > float.MinValue)
+        {
+            rectToTranslate.anchoredPosition = Vector2.MoveTowards(rectToTranslate.anchoredPosition, target, Time.deltaTime * 200f);
+            distance = Vector2.Distance(rectToTranslate.anchoredPosition, target);
+            yield return null;
+        }
+
     }
 
     internal void Play(LevelData data)
     {
-        SceneManager.LoadScene(data.Scene.buildIndex);
+        SceneManager.LoadScene(data.SceneInBuildIndex);
     }
 }

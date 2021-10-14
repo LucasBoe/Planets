@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class Astronaut : MonoBehaviour
 {
+    LevelHandler levelHandler;
     float rotation;
+
+    private void OnEnable()
+    {
+        levelHandler = FindObjectOfType<LevelHandler>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +29,7 @@ public class Astronaut : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Rocket>().Astronauts += 1;
+            levelHandler.Astronauts += 1;
             StartCoroutine(MoveToRocketRoutine(collision.transform));
             Destroy(GetComponent<Collider2D>());
         }

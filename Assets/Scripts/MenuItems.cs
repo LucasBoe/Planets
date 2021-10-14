@@ -12,13 +12,26 @@ public class MenuItems
         Scene activeScene = SceneManager.GetActiveScene();
         LevelData newData = ScriptableObject.CreateInstance<LevelData>();
 
-        newData.Scene = activeScene;
         newData.AstronautsMax = GameObject.FindObjectsOfType<Astronaut>().Length;
         newData.Name = activeScene.name;
 
-        List<EditorBuildSettingsScene> scenesInBuild = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
-        scenesInBuild.Add(new EditorBuildSettingsScene(activeScene.path, true));
-        EditorBuildSettings.scenes = scenesInBuild.ToArray();
+        bool sceneInBuildSettings = false;
+        foreach (var scenes in EditorBuildSettings.scenes)
+        {
+            if (scenes.path == activeScene.path)
+                sceneInBuildSettings = true;
+        }
+
+        if (!sceneInBuildSettings)
+        {
+            List<EditorBuildSettingsScene> scenesInBuild = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+            scenesInBuild.Add(new EditorBuildSettingsScene(activeScene.path, true));
+            EditorBuildSettings.scenes = scenesInBuild.ToArray();
+        }
+
+        newData.SceneInBuildIndex = activeScene.buildIndex;
+
+        GameObject.FindObjectOfType<LevelHandler>().LevelData = newData;
 
         AssetDatabase.CreateAsset(newData, "Assets/Resources/LEVEL_" + newData.Name + ".asset");
         AssetDatabase.SaveAssets();

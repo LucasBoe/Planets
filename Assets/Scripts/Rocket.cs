@@ -9,6 +9,7 @@ public class Rocket : InitialForce
     [SerializeField] RocketSettings settings;
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Transform rocketDestroyPrefab;
+    [SerializeField] FollowTransform rocketTail;
 
     public bool On = false;
     public int Astronauts = 0;
@@ -16,6 +17,7 @@ public class Rocket : InitialForce
     protected override void Start()
     {
         transform.rotation = settings.StartRotation;
+        Instantiate(rocketTail).ToFollow = transform;
     }
 
     // Update is called once per frame

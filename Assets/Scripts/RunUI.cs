@@ -5,16 +5,16 @@ using TMPro;
 
 public class RunUI : MonoBehaviour
 {
-    Rocket rocket;
+    LevelHandler levelHandler;
 
     [SerializeField] TMP_Text counterTextUI;
-    private void Start()
+    private void OnEnable()
     {
-        rocket = FindObjectOfType<Rocket>();
+        levelHandler = FindObjectOfType<LevelHandler>();
     }
 
     private void Update()
     {
-        counterTextUI.text = rocket.Astronauts.ToString();
+        counterTextUI.text = levelHandler.Astronauts.ToString();
     }
 }

@@ -9,5 +9,5 @@ public class LevelData : ScriptableObject
     public string Name;
     public int Astronauts, AstronautsMax;
     public bool Finished;
-    public Scene Scene;
+    public int SceneInBuildIndex;
 }

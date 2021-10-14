@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class LevelSelectionRocket : MonoBehaviour
 {
-    [SerializeField] LevelUI selected;
+    public int selected;
     float rotation = 0;
     Coroutine current;
 
     // Update is called once per frame
     void Update()
     {
-        if (current != null || selected == null)
+        if (current != null)
             return;
 
         if (rotation >= 180)
         {
-            if (Vector3.Distance(selected.transform.position, transform.position) > 0.1f && selected.transform.position.x > transform.position.x)
+            if (Vector3.Distance(IndexToPosition(selected), (transform as RectTransform).anchoredPosition) > 0.1f && IndexToPosition(selected).x > (transform as RectTransform).anchoredPosition.x)
             {
-                current = StartCoroutine(MoveRoutine(selected.transform.position));
+                current = StartCoroutine(MoveRoutine(IndexToPosition(selected)));
             }
             else
             {
@@ -29,11 +29,9 @@ public class LevelSelectionRocket : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(selected.transform.position, transform.position) > 0.1f  && selected.transform.position.x < transform.position.x)
+            if (Vector3.Distance(IndexToPosition(selected), (transform as RectTransform).anchoredPosition) > 0.1f && IndexToPosition(selected).x < (transform as RectTransform).anchoredPosition.x)
             {
-                Debug.Log(selected.transform.position + " - " + transform.position);
-
-                current = StartCoroutine(MoveRoutine(selected.transform.position));
+                current = StartCoroutine(MoveRoutine(IndexToPosition(selected)));
             }
             else
             {
@@ -42,15 +40,20 @@ public class LevelSelectionRocket : MonoBehaviour
         }
     }
 
+    private Vector3 IndexToPosition(int selected)
+    {
+        return new Vector3(selected * 200, 0, 0);
+    }
+
     IEnumerator MoveRoutine(Vector3 position)
     {
-        Vector3 positionBefore = transform.position;
+        Vector3 positionBefore = (transform as RectTransform).anchoredPosition;
         float t = 1;
 
         while (t > 0)
         {
             t -= Time.deltaTime;
-            transform.position = Vector3.Lerp(position, positionBefore, t);
+            (transform as RectTransform).anchoredPosition = Vector3.Lerp(position, positionBefore, t);
             yield return null;
         }
 

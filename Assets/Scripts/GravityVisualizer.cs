@@ -10,6 +10,11 @@ public class GravityVisualizer : SingletonBehaviour<GravityVisualizer>
     List<Planet> inGravityOf = new List<Planet>();
     float distanceBefore = 0;
 
+    private void OnEnable()
+    {
+        rocket = FindObjectOfType<Rocket>().GetComponent<Collider2D>();
+    }
+
     internal void EnterGravity(Planet planet)
     {
         if (!inGravityOf.Contains(planet))

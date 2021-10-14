@@ -11,17 +11,19 @@ public class LevelUI : MonoBehaviour
     [SerializeField] Sprite[] planetSprites;
 
     [SerializeField] CanvasGroup fokusVisuals;
-    [SerializeField] Image plantImage;
+    [SerializeField] Image planetImage;
     [SerializeField] Transform astronautDisplay;
+    [SerializeField] Image checkmark;
     [SerializeField] TMP_Text nameText, astronautText;
 
     LevelSelection levelSelection;
 
     internal void Setup(LevelData data)
     {
-        plantImage.sprite = planetSprites[UnityEngine.Random.Range(0, planetSprites.Length)];
+        planetImage.sprite = planetSprites[UnityEngine.Random.Range(0, planetSprites.Length)];
         this.data = data;
         nameText.text = data.Name;
+        checkmark.enabled = data.Finished;
         astronautDisplay.gameObject.SetActive(data.AstronautsMax > 0);
         astronautText.text = data.Astronauts + " / " + data.AstronautsMax;
 

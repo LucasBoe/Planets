@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Test01
   Astronauts: 0
-  AstronautsMax: 2
+  AstronautsMax: 1
   Finished: 0
-  Scene:
-    m_Handle: -5804
+  SceneInBuildIndex: 2
