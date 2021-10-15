@@ -23,4 +23,13 @@ public class Planet : MonoBehaviour
         if (collision.GetComponent<Rocket>())
             GravityVisualizer.Instance.LeaveGravity(this);
     }
+
+    private void OnDrawGizmos()
+    {
+        foreach (CircleCollider2D coll in GetComponents<CircleCollider2D>())
+        {
+            if (coll.usedByEffector)
+                Gizmos.DrawWireSphere(transform.position, coll.radius * transform.localScale.x);
+        }
+    }
 }
