@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : InitialForce
+public class Rocket : SimulationBehaviour
 {
     [SerializeField] float motorForce;
     [SerializeField] float startForce;
@@ -14,7 +14,14 @@ public class Rocket : InitialForce
     public bool On = false;
     public int Astronauts = 0;
 
-    protected override void Start()
+    protected Rigidbody2D rigidbody2D;
+
+    private void OnEnable()
+    {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    protected void Start()
     {
         transform.rotation = settings.StartRotation;
         Instantiate(rocketTail).ToFollow = transform;
@@ -33,8 +40,10 @@ public class Rocket : InitialForce
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 On = true;
-                rigidbody2D.AddForce(transform.up * settings.StartForce);
-                lineRenderer.enabled = false;
+                foreach (SimulationBehaviour behaviour in FindObjectsOfType<SimulationBehaviour>())
+                {
+                    behaviour.StartSimulation();
+                }
             }
         }
         else
@@ -42,6 +51,12 @@ public class Rocket : InitialForce
             transform.up = rigidbody2D.velocity.normalized;
             rigidbody2D.AddForce(Vector2.up * motorForce * Time.deltaTime);
         }
+    }
+
+    public override void StartSimulation()
+    {
+        rigidbody2D.AddForce(transform.up * settings.StartForce);
+        lineRenderer.enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

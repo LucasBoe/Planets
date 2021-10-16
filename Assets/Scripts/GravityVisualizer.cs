@@ -66,8 +66,6 @@ public class GravityVisualizer : SingletonBehaviour<GravityVisualizer>
 
             emit.rateOverTime = Mathf.MoveTowards(emit.rateOverTime.constant, intensity, 0.1f);
 
-            Debug.Log(intensity);
-
             distanceBefore = distanceNew;
         }
     }
