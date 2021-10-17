@@ -47,8 +47,9 @@ public class Planet : SimulationBehaviour
         toOrbit.RegisterOrbiter(this);
 
         distance = Vector2.Distance(transform.position, toOrbit.transform.position);
-        float force = (1f / Mathf.Sqrt(distance)) * Mathf.PI;
-        Vector2 direction = Vector2.Perpendicular((toOrbit.transform.position - transform.position).normalized) ;
+        //float force = (1f / Mathf.Sqrt(distance)) * Mathf.PI - suqared force mode
+        float force = 1;  //linear force with 100 - use PI for 1000
+        Vector2 direction = Vector2.Perpendicular((toOrbit.transform.position - transform.position).normalized);
         rigidbody2D.velocity = (direction * force * (clockwise ? 1 : -1));
     }
 
