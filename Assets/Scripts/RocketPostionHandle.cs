@@ -5,6 +5,7 @@ using UnityEngine;
 public class RocketPostionHandle : InWorldHandle
 {
     [SerializeField] RocketStartCurve limiter;
+    [SerializeField] Rocket rocket;
 
     protected override void OnEnable()
     {
@@ -19,6 +20,7 @@ public class RocketPostionHandle : InWorldHandle
     public override void StartSimulation()
     {
         settings.RocketPos = transform.position;
+        rocket.transform.parent = null;
         base.StartSimulation();
         Destroy(gameObject);
     }

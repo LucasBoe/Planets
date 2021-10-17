@@ -836,7 +836,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   planetSprites:
-  - {fileID: 21300000, guid: d057d43ed17a36b45abad03e068dcdf0, type: 3}
   - {fileID: 21300000, guid: 12279f1b3899f0e4b92479bd695c6c25, type: 3}
   - {fileID: 21300000, guid: 7c41c9ddf511f384685d0f4ca06e33e5, type: 3}
   fokusVisuals: {fileID: 7039622607214598497}

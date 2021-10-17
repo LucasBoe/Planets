@@ -22,6 +22,11 @@ public class Rocket : SimulationBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void OnDisable()
+    {
+        Debug.LogWarning("Rocket Disabled");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -53,7 +58,7 @@ public class Rocket : SimulationBehaviour
         transform.parent = null;
         rigidbody2D.AddForce(transform.up * settings.StartForce);
         lineRenderer.enabled = false;
-        Instantiate(rocketTail).ToFollow = transform;
+        Instantiate(rocketTail, transform.position, Quaternion.identity).ToFollow = transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
