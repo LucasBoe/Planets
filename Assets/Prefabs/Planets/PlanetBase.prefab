@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 0
-  rotationSpeed: -10
+  rotationSpeed: 0
   glowPrefab: {fileID: 6649737972188941597, guid: 024ebc7eb7596424991f4a8185768597, type: 3}
   toOrbit: {fileID: 0}
   clockwise: 1
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3c46cd5418e42af4da94bfd17746db66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
