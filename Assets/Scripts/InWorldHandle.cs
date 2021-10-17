@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class InWorldHandle : SimulationBehaviour
 {
+    public float Radius = 1f;
     [SerializeField] protected RocketSettings settings;
     [SerializeField] protected Vector3 offset;
+
 
     protected Camera main;
 

@@ -20,6 +20,7 @@ public class RocketPostionHandle : InWorldHandle
     {
         settings.RocketPos = transform.position;
         base.StartSimulation();
+        Destroy(gameObject);
     }
 
     protected override Vector2 CalculateMousePosition()
