@@ -28,4 +28,16 @@ public static class ExtentionMethod
     {
         return before | toAdd;
     }
+
+    public static Vector3[] ToVector3Array(this Vector2[] vector2s, float z)
+    {
+        List<Vector3> vector3s = new List<Vector3>();
+
+        foreach (Vector2 vector2 in vector2s)
+        {
+            vector3s.Add(new Vector3(vector2.x, vector2.y, z));
+        }
+
+        return vector3s.ToArray();
+    }
 }

@@ -55,6 +55,7 @@ MonoBehaviour:
   rotationSpeed: -10
   glowPrefab: {fileID: 6649737972188941597, guid: 024ebc7eb7596424991f4a8185768597, type: 3}
   toOrbit: {fileID: 0}
+  clockwise: 1
 --- !u!114 &7331494901208691503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd49a94a2c030bb4b8d19f293dbd1445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetIndex: 0
 --- !u!212 &7331494901208691494
 SpriteRenderer:
   m_ObjectHideFlags: 0

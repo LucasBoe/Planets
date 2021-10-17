@@ -10,6 +10,7 @@ public class Rocket : SimulationBehaviour
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Transform rocketDestroyPrefab;
     [SerializeField] FollowTransform rocketTail;
+    [SerializeField] RocketRotationHandle rocketRotationHandle;
 
     public bool On = false;
     public int Astronauts = 0;
@@ -21,19 +22,13 @@ public class Rocket : SimulationBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    protected void Start()
-    {
-        transform.rotation = settings.StartRotation;
-        Instantiate(rocketTail).ToFollow = transform;
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (!On)
         {
-            transform.Rotate(Vector3.forward, -Input.GetAxis("Horizontal"));
-            settings.StartRotation = transform.rotation;
+            Vector2 lookAt = rocketRotationHandle.transform.localPosition;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90f);
             settings.StartForce += Input.GetAxis("Vertical");
             lineRenderer.SetPosition(1, new Vector3(0, settings.StartForce / 50, 1));
 
@@ -55,8 +50,10 @@ public class Rocket : SimulationBehaviour
 
     public override void StartSimulation()
     {
+        transform.parent = null;
         rigidbody2D.AddForce(transform.up * settings.StartForce);
         lineRenderer.enabled = false;
+        Instantiate(rocketTail).ToFollow = transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

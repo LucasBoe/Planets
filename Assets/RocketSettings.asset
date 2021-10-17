@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartForce: 500
   StartRotation: {x: 0, y: 0, z: 0, w: 0}
+  LookAtPos: {x: -14.805891, y: -21.266827, z: -5}
+  RocketPos: {x: 33.806404, y: 25.075802, z: 0}

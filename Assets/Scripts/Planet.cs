@@ -11,6 +11,7 @@ public class Planet : SimulationBehaviour
     [SerializeField] GameObject glowPrefab;
 
     [SerializeField] Planet toOrbit;
+    [SerializeField] bool clockwise = true;
 
     protected Rigidbody2D rigidbody2D;
     protected PointEffector2D pointEffector2D;
@@ -47,8 +48,8 @@ public class Planet : SimulationBehaviour
 
         distance = Vector2.Distance(transform.position, toOrbit.transform.position);
         float force = (1f / Mathf.Sqrt(distance)) * Mathf.PI;
-        Vector2 direction = Vector2.Perpendicular((toOrbit.transform.position - transform.position).normalized);
-        rigidbody2D.velocity = (direction * force);
+        Vector2 direction = Vector2.Perpendicular((toOrbit.transform.position - transform.position).normalized) ;
+        rigidbody2D.velocity = (direction * force * (clockwise ? 1 : -1));
     }
 
     private void RegisterOrbiter(Planet planet)
