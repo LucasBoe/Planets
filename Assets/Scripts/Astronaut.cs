@@ -29,6 +29,7 @@ public class Astronaut : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("collect astronaut");
             levelHandler.Astronauts += 1;
             StartCoroutine(MoveToRocketRoutine(collision.transform));
             Destroy(GetComponent<Collider2D>());

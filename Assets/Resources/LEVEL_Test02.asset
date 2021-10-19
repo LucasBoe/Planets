@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc927ae6becd1814189dda818b23401b, type: 3}
-  m_Name: LEVEL_Basic_10
+  m_Name: LEVEL_Test02
   m_EditorClassIdentifier: 
-  Name: Test10
-  Astronauts: 3
-  AstronautsMax: 1
+  Name: Roundabout
+  Astronauts: 0
+  AstronautsMax: 3
   Finished: 0
-  SceneInBuildIndex: 2
+  SceneInBuildIndex: 6

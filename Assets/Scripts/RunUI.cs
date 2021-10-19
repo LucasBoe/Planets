@@ -8,7 +8,7 @@ public class RunUI : MonoBehaviour
     LevelHandler levelHandler;
 
     [SerializeField] TMP_Text counterTextUI;
-    private void OnEnable()
+    private void Start()
     {
         levelHandler = FindObjectOfType<LevelHandler>();
     }
