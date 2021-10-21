@@ -1330,8 +1330,8 @@
     "m_ShaderOutputName": "Strength",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 10.0,
-        "y": 10.0
+        "x": 25.0,
+        "y": 25.0
     },
     "m_DefaultValue": {
         "x": 0.0,
