@@ -24,15 +24,7 @@ public class PlanetVisualization : MonoBehaviour
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
 
         int pointCount = 36;
-        int segmentLength = 360 / pointCount;
-        List<Vector3> linePositions = new List<Vector3>();
-
-        for (int i = 0; i <= 360; i += segmentLength)
-        {
-            Vector2 positionXY = new Vector2(Mathf.Sin(i * Mathf.Deg2Rad), Mathf.Cos(i * Mathf.Deg2Rad));
-            Vector3 positionxyz = new Vector3(positionXY.x * radius, positionXY.y * radius, 0);
-            linePositions.Add(positionxyz);
-        }
+        List<Vector3> linePositions = Util.CreatePointsInCircle(radius, pointCount);
 
         PlanetDataHolder planetDataHolderInstance = PlanetDataHolder.Instance;
 
@@ -44,7 +36,8 @@ public class PlanetVisualization : MonoBehaviour
         {
             lineRenderer.material = planetDataHolderInstance.OrbiterCircleMat;
             lineRenderer.textureMode = LineTextureMode.Tile;
-        } else
+        }
+        else
         {
             lineRenderer.material = planetDataHolderInstance.PlanetOrbitCircleMat;
         }
