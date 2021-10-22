@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,15 @@ public class Rocket : SimulationBehaviour
     [SerializeField] RocketSettings settings;
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Transform rocketDestroyPrefab;
-    [SerializeField] FollowTransform rocketTail;
+    [SerializeField] FollowTransform rocketTailPrefab;
     [SerializeField] RocketRotationHandle rocketRotationHandle;
 
     public bool On = false;
     public int Astronauts = 0;
 
     protected Rigidbody2D rigidbody2D;
+
+    private FollowTransform trail;
 
     private void OnEnable()
     {
@@ -53,12 +56,26 @@ public class Rocket : SimulationBehaviour
         }
     }
 
+    internal void Teleport(Vector3 position)
+    {
+        Destroy(trail);
+        transform.position = position;
+        trail = CreateRocketTrail();
+    }
+
     public override void StartSimulation()
     {
         transform.parent = null;
         rigidbody2D.AddForce(transform.up * settings.StartForce);
         lineRenderer.enabled = false;
-        Instantiate(rocketTail, transform.position, Quaternion.identity).ToFollow = transform;
+        trail = CreateRocketTrail();
+    }
+
+    private FollowTransform CreateRocketTrail()
+    {
+        var trail = Instantiate(rocketTailPrefab, transform.position, Quaternion.identity);
+        trail.ToFollow = transform;
+        return trail;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

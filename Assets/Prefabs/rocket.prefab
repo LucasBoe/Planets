@@ -52,7 +52,7 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: f0b45db315bf8494cbb1395a1b79a125, type: 2}
   lineRenderer: {fileID: 4779859500683246552}
   rocketDestroyPrefab: {fileID: 873491392989514150, guid: a90fc13f8dbc70b48b866c45d4fb0e17, type: 3}
-  rocketTail: {fileID: 6939023325030432427, guid: fc3457b9376c47a4fbd41ce69fc426f1, type: 3}
+  rocketTailPrefab: {fileID: 6939023325030432427, guid: fc3457b9376c47a4fbd41ce69fc426f1, type: 3}
   rocketRotationHandle: {fileID: 0}
   On: 0
   Astronauts: 0
