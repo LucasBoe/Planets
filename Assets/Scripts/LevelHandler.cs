@@ -22,12 +22,9 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
         }
     }
 
-    private void Update()
+    public void ResetLevel()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ReachedTarget()

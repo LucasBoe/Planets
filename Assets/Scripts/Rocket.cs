@@ -42,11 +42,7 @@ public class Rocket : SimulationBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                On = true;
-                foreach (SimulationBehaviour behaviour in FindObjectsOfType<SimulationBehaviour>())
-                {
-                    behaviour.StartSimulation();
-                }
+                Launch();
             }
         }
         else
@@ -56,7 +52,19 @@ public class Rocket : SimulationBehaviour
         }
     }
 
-    internal void Teleport(Vector3 position)
+    public void Launch()
+    {
+        if (On)
+            return;
+
+        On = true;
+        foreach (SimulationBehaviour behaviour in FindObjectsOfType<SimulationBehaviour>())
+        {
+            behaviour.StartSimulation();
+        }
+    }
+
+    public void Teleport(Vector3 position)
     {
         Destroy(trail);
         transform.position = position;
