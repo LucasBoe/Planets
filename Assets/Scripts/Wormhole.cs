@@ -40,7 +40,7 @@ public class Wormhole : MonoBehaviour
         while (t > 0)
         {
             float lerp = t / 0.5f;
-            t -= Time.deltaTime * 4;
+            t -= Time.deltaTime * 2;
             player.transform.position = Vector3.Lerp(transform.position, startPos, lerp);
             player.transform.localScale = Vector3.Lerp(Vector3.one * 0.1f, Vector3.one, lerp);
             yield return null;
@@ -51,7 +51,7 @@ public class Wormhole : MonoBehaviour
         while (t < 0.5f)
         {
             float lerp = t / 0.5f;
-            t += Time.deltaTime * 4;
+            t += Time.deltaTime * 2;
             player.transform.localScale = Vector3.Lerp(Vector3.one * 0.1f, Vector3.one, Mathf.Sqrt(Mathf.Clamp(lerp,0.01f, 1f)));
             yield return null;
         }
