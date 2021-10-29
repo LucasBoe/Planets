@@ -6,9 +6,18 @@ public class Target : MonoBehaviour
 {
     LevelHandler levelHandler;
 
+    private void Update()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, Time.time * 10);
+    }
+
     private void OnEnable()
     {
         levelHandler = FindObjectOfType<LevelHandler>();
+        LineRenderer lineRenderer = GetComponentInChildren<LineRenderer>();
+        Vector3[] points = Util.CreatePointsInCircle(4, 36).ToArray();
+        lineRenderer.positionCount = points.Length;
+        lineRenderer.SetPositions(points);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -8,7 +8,11 @@ public class Wormhole : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Wormhole target;
 
+    public AudioSource startTeleportSource, endTeleportSource;
+
     public bool isReceiving;
+
+    Coroutine teleportationRoutine = null;
 
     void Start()
     {
@@ -19,11 +23,11 @@ public class Wormhole : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isReceiving && collision.CompareTag("Player") && target != null)
+        if (teleportationRoutine == null && !isReceiving && collision.CompareTag("Player") && target != null)
         {
             Debug.Log("Entered Wormhole");
             StopAllCoroutines();
-            StartCoroutine(TeleportationRoutine(collision));
+            teleportationRoutine = StartCoroutine(TeleportationRoutine(collision));
         }
     }
 
@@ -31,6 +35,7 @@ public class Wormhole : MonoBehaviour
     {
         Vector3 startPos = player.transform.position;
         target.isReceiving = true;
+        startTeleportSource.Play();
 
         float t = 0.5f;
 
@@ -46,7 +51,9 @@ public class Wormhole : MonoBehaviour
             yield return null;
         }
 
+        yield return new WaitForSeconds(0.1f);
         player.GetComponent<Rocket>().Teleport(target.transform.position);
+        target.endTeleportSource.Play();
 
         while (t < 0.5f)
         {

@@ -20,6 +20,9 @@ public class Rocket : SimulationBehaviour
 
     private FollowTransform trail;
 
+    public System.Action OnRocketLaunch;
+    public System.Action OnRocketCrash;
+
     private void OnEnable()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -57,6 +60,8 @@ public class Rocket : SimulationBehaviour
         if (On)
             return;
 
+        OnRocketLaunch?.Invoke();
+
         On = true;
         foreach (SimulationBehaviour behaviour in FindObjectsOfType<SimulationBehaviour>())
         {
@@ -89,6 +94,7 @@ public class Rocket : SimulationBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Instantiate(rocketDestroyPrefab, transform.position, transform.rotation);
+        OnRocketCrash?.Invoke();
         Destroy(gameObject);
     }
 }
