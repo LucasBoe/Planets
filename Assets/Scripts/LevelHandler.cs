@@ -35,9 +35,14 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
             LevelData.Astronauts = Astronauts;
 
         LevelData.Finished = true;
-        Instantiate(transitionPrefab);
 
-        Invoke("ReturnToLevelSelection",2);
+        Invoke("StartTransition", 2);
+        Invoke("ReturnToLevelSelection",4);
+    }
+
+    private void StartTransition()
+    {
+        Instantiate(transitionPrefab);
     }
 
     private void ReturnToLevelSelection()

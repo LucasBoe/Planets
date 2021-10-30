@@ -6,6 +6,8 @@ public class Target : MonoBehaviour
 {
     LevelHandler levelHandler;
 
+    [SerializeField] AudioSource reachedTargetSource;
+
     private void Update()
     {
         transform.rotation = Quaternion.Euler(0, 0, Time.time * 10);
@@ -24,6 +26,7 @@ public class Target : MonoBehaviour
     {
         if (levelHandler != null && collision.CompareTag("Player"))
         {
+            reachedTargetSource.Play();
             levelHandler.ReachedTarget();
         }
     }

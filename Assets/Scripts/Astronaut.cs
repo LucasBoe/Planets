@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Astronaut : MonoBehaviour
 {
+    [SerializeField] AudioSource collectSource;
+
     LevelHandler levelHandler;
     float rotation;
 
@@ -29,6 +31,8 @@ public class Astronaut : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            collectSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+            collectSource.Play();
             Debug.Log("collect astronaut");
             levelHandler.Astronauts += 1;
             StartCoroutine(MoveToRocketRoutine(collision.transform));
