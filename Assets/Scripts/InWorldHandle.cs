@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InWorldHandle : SimulationBehaviour
 {
-    public float Radius = 1f;
+    public bool AutoRadius;
+    public float BaseRadius;
+    public float Radius => visuals.localScale.x * BaseRadius;
+
+    [SerializeField] Transform visuals;
     [SerializeField] protected RocketSettings settings;
     [SerializeField] protected Vector3 offset;
 
 
     protected Camera main;
+
+    public Action OnPointerDown;
+    public Action OnPointerUp;
+    public Action OnPointerEnter;
+    public Action OnPointerExit;
 
     protected virtual void OnEnable()
     {
@@ -20,6 +30,7 @@ public class InWorldHandle : SimulationBehaviour
     {
         Destroy(this);
     }
+
 
     private void OnMouseDrag()
     {
@@ -32,4 +43,8 @@ public class InWorldHandle : SimulationBehaviour
     {
         return (Vector2)main.ScreenToWorldPoint(Input.mousePosition);
     }
+    private void OnMouseDown() { OnPointerDown?.Invoke(); }
+    private void OnMouseUp() { OnPointerUp?.Invoke(); }
+    private void OnMouseEnter() { OnPointerEnter?.Invoke(); }
+    private void OnMouseExit() { OnPointerExit?.Invoke(); }
 }

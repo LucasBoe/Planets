@@ -78,6 +78,7 @@ public class Rocket : SimulationBehaviour
 
     public override void StartSimulation()
     {
+        Time.timeScale = 1.5f;
         transform.parent = null;
         rigidbody2D.AddForce(transform.up * settings.StartForce);
         lineRenderer.enabled = false;

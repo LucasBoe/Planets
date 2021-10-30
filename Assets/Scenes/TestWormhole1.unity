@@ -678,18 +678,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4243338852859654945, guid: bbbb663926cdd0142bfb61eb063e99af, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.a
-      value: 0.39215687
-      objectReference: {fileID: 0}
-    - target: {fileID: 4243338852859654945, guid: bbbb663926cdd0142bfb61eb063e99af, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0.39215687
-      objectReference: {fileID: 0}
-    - target: {fileID: 4243338852859654945, guid: bbbb663926cdd0142bfb61eb063e99af, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6287013206814625212, guid: bbbb663926cdd0142bfb61eb063e99af, type: 3}
       propertyPath: m_IsActive
       value: 1
