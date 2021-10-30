@@ -28,6 +28,7 @@ public class ButtonFeedbackBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
     }
     private void PointerEnter()
     {
+        SoundHandler.Play(BaseSounds.UIClick);
         isHovered = true;
     }
 
@@ -43,14 +44,14 @@ public class ButtonFeedbackBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
 
     private void Update()
     {
-        float speed = Time.deltaTime / 4;
+        float speed = Time.deltaTime / 2;
 
         if (pointerIsDown)
-            scale = Mathf.MoveTowards(scale, 1.2f, speed*10);
+            scale = Mathf.MoveTowards(scale, 0.9f, speed*4);
         else if (isHovered)
-            scale = Mathf.MoveTowards(scale, 1 + (0.1f) * Mathf.Sin(Time.time * 4), speed);
+            scale = Mathf.MoveTowards(scale, 1.15f + (0.025f) * Mathf.Sin(Time.time * 6), speed);
         else
-            scale = Mathf.MoveTowards(scale, 1, speed);
+            scale = Mathf.MoveTowards(scale, 1, speed*2);
 
         (spriteRenderer ? spriteRenderer.transform : transform).localScale = Vector3.one * scale;
     }
