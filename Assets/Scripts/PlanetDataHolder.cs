@@ -6,6 +6,7 @@ public class PlanetDataHolder : SingletonBehaviour<PlanetDataHolder>
 {
     public List<PlanetData> Data = new List<PlanetData>();
     public Material PlanetOrbitCircleMat, OrbiterCircleMat;
+    public Texture2D[] planetTextures;
 }
 
 [System.Serializable]

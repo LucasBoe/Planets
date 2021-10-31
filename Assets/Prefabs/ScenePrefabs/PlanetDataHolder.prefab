@@ -78,3 +78,9 @@ MonoBehaviour:
       m_Bits: 131072
   PlanetOrbitCircleMat: {fileID: 2100000, guid: 08af8fb7fba29cb429247ebacb620b76, type: 2}
   OrbiterCircleMat: {fileID: 2100000, guid: 0d9e7a3c9d75c104b92be63d9cb7d971, type: 2}
+  planetTextures:
+  - {fileID: 2800000, guid: e5199788e17dff24cb45d6b5db4c94f5, type: 3}
+  - {fileID: 2800000, guid: 0ff9a3655e5b9524a97b9c454b6be091, type: 3}
+  - {fileID: 2800000, guid: b769acea4bf71c34eadb284e69eae5ac, type: 3}
+  - {fileID: 2800000, guid: c916147440e0be24d9ac72274b49bb51, type: 3}
+  - {fileID: 2800000, guid: bdf06256135603f418f8199186fd1172, type: 3}

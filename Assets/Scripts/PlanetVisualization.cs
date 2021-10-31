@@ -53,8 +53,9 @@ public class PlanetVisualization : MonoBehaviour
 
         spriteRenderer.material = new Material(spriteRenderer.material);
         spriteRenderer.material.SetInt("seed", name.GetHashCode());
+        spriteRenderer.material.SetTexture("tex", planetDataHolderInstance.planetTextures[UnityEngine.Random.Range(0, planetDataHolderInstance.planetTextures.Length)]);
         spriteRenderer.material.SetVector("direction", new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
-        spriteRenderer.material.SetColor("tint", Color.Lerp(color, Color.white, 0.5f));
+        spriteRenderer.material.SetColor("tint", new Color(color.r, color.g, color.b, 0));
     }
 
     private bool IsOrbiter()
