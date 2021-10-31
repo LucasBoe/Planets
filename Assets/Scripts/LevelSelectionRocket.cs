@@ -45,6 +45,11 @@ public class LevelSelectionRocket : MonoBehaviour
         return new Vector3(selected * 200, 0, 0);
     }
 
+    public void Teleport(int indexToTeleportTo)
+    {
+        (transform as RectTransform).anchoredPosition = IndexToPosition(indexToTeleportTo);
+    }
+
     IEnumerator MoveRoutine(Vector3 position)
     {
         Vector3 positionBefore = (transform as RectTransform).anchoredPosition;

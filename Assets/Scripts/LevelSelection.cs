@@ -9,29 +9,47 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] LevelSelectionRocket rocket;
     [SerializeField] RectTransform rectToTranslate;
     [SerializeField] LevelUI levelUIElementPrefab;
+
     List<LevelData> levelDatas;
     List<LevelUI> levelUIs;
 
     // Start is called before the first frame update
     void Start()
     {
-        CreateUIElementsForAllLevels();
+        int toHighlight = CreateUIElementsForAllLevels();
         if (levelUIs != null && levelUIs.Count > 0)
-            rocket.selected = 0;
+        {
+            rectToTranslate.anchoredPosition = CalculateTranslationPositonForLevelUIElement(toHighlight);
+            rocket.selected = toHighlight;
+            rocket.Teleport(toHighlight);
+            levelUIs[toHighlight].SetFokused(true);
+        }
     }
 
-    private void CreateUIElementsForAllLevels()
+    private int CreateUIElementsForAllLevels()
     {
         var lds = Resources.LoadAll("", typeof(LevelData));
 
         levelDatas = new List<LevelData>();
         levelUIs = new List<LevelUI>();
 
-        foreach (LevelData data in lds)
+        int toHighlight = 0;
+
+        for (int i = 0; i < lds.Length; i++)
         {
+            LevelData data = lds[i] as LevelData;
             levelDatas.Add(data);
             levelUIs.Add(CreateLevelUIFor(data));
+
+            if (data.ComingFromThatScene)
+            {
+                data.ComingFromThatScene = false;
+                toHighlight = i;
+                Debug.LogWarning("Coming from scene with id: " + i);
+            }
         }
+
+        return toHighlight;
     }
 
     private LevelUI CreateLevelUIFor(LevelData data)
@@ -44,7 +62,7 @@ public class LevelSelection : MonoBehaviour
     internal void Fokus(LevelUI levelUI, LevelData data)
     {
         StopAllCoroutines();
-        StartCoroutine(TranslatePositionTo(new Vector2(-((levelUI.transform as RectTransform).anchoredPosition.x) +100, 0)));
+        StartCoroutine(TranslatePositionTo(CalculateTranslationPositonForLevelUIElement(levelUI)));
 
         int i = 0;
         foreach (var ui in levelUIs)
@@ -53,12 +71,23 @@ public class LevelSelection : MonoBehaviour
             {
                 rocket.selected = i;
                 ui.SetFokused(true);
-            } else
+            }
+            else
             {
                 ui.SetFokused(false);
             }
             i++;
         }
+    }
+
+    private static Vector2 CalculateTranslationPositonForLevelUIElement(LevelUI levelUI)
+    {
+        return new Vector2(-((levelUI.transform as RectTransform).anchoredPosition.x) + 100, 0);
+    }
+
+    private static Vector2 CalculateTranslationPositonForLevelUIElement(int index)
+    {
+        return new Vector2(index * -200, 0);
     }
 
     private IEnumerator TranslatePositionTo(Vector2 target)
@@ -76,7 +105,6 @@ public class LevelSelection : MonoBehaviour
 
     internal void Play(LevelData data)
     {
-        data.JustCameFromMenue = true;
         SceneManager.LoadScene(data.SceneInBuildIndex);
     }
 }

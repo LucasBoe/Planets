@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelHandler : SingletonBehaviour<LevelHandler>
 {
+    public static bool Reset = false;
+
     [SerializeField] GameObject transitionPrefab;
 
     public LevelData LevelData;
@@ -21,15 +23,15 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
                 LevelData = data;
         }
 
-        if (LevelData.JustCameFromMenue)
-        {
-            LevelData.JustCameFromMenue = false;
+        if (Reset == false)
             IntroPlayer.Instance.PlayIntro(LevelData.Intro);
-        }
+        else
+            Reset = false;
     }
 
     public void ResetLevel()
     {
+        Reset = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -43,7 +45,7 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
         LevelData.Finished = true;
 
         Invoke("StartTransition", 2);
-        Invoke("ReturnToLevelSelection",4);
+        Invoke("ReturnToLevelSelection", 4);
     }
 
     private void StartTransition()
@@ -51,8 +53,9 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
         Instantiate(transitionPrefab);
     }
 
-    private void ReturnToLevelSelection()
+    public void ReturnToLevelSelection()
     {
+        LevelData.ComingFromThatScene = true;
         SceneManager.LoadScene("LevelSelection");
     }
 }

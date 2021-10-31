@@ -45,7 +45,6 @@ public class IntroPlayer : SingletonBehaviour<IntroPlayer>
             float scaleAnimationFactor = 0;
             while (scaleAnimationFactor < animationDuration)
             {
-                Debug.LogWarning(scaleAnimationFactor);
                 transform.localScale = Vector3.one * Mathf.Pow((scaleAnimationFactor / animationDuration), 3);
                 scaleAnimationFactor += Time.deltaTime;
                 yield return null;
