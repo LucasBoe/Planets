@@ -16,8 +16,8 @@ MonoBehaviour:
   Astronauts: 0
   AstronautsMax: 2
   Finished: 0
-  SceneInBuildIndex: 7
-  JustCameFromMenue: 0
+  SceneInBuildIndex: 8
+  ComingFromThatScene: 0
   Intro:
     Text:
     - In this mission you have to closely manouver around to orbiters.

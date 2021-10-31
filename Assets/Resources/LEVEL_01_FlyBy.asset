@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc927ae6becd1814189dda818b23401b, type: 3}
+  m_Name: LEVEL_01_FlyBy
+  m_EditorClassIdentifier: 
+  Name: Fly By
+  Astronauts: 0
+  AstronautsMax: 0
+  Finished: 1
+  SceneInBuildIndex: 2
+  ComingFromThatScene: 0
+  Intro:
+    Text:
+    - There is one thing you need to understand about orbits...
+    - The steeper you fly in, the steeper you come out.
+    - If you want your path to be less curved, aim more towards the planet
+    - Try it out!

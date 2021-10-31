@@ -16,8 +16,8 @@ MonoBehaviour:
   Astronauts: 0
   AstronautsMax: 0
   Finished: 0
-  SceneInBuildIndex: 3
-  JustCameFromMenue: 0
+  SceneInBuildIndex: 4
+  ComingFromThatScene: 0
   Intro:
     Text:
     - Good Luck.

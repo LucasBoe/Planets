@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06712596fe96cf64eb7ad2dd05ddb84d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundMixer: {fileID: 24100000, guid: b4fd075a16ba6bc42bfb75e5c4fb516d, type: 2}
   uiClick: {fileID: 8300000, guid: de94ba50c4ce82049a4348d7ef4c2484, type: 3}
   radioOnOff: {fileID: 8300000, guid: 4acef49b0925bab4f8f8fe0701e86306, type: 3}

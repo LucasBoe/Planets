@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundHandler : SingletonBehaviour<SoundHandler>
 {
+    [SerializeField] AudioMixer soundMixer;
     [SerializeField] AudioClip uiClick, radioOnOff;
 
     public static void Play(BaseSounds sound)
@@ -28,6 +30,7 @@ public class SoundHandler : SingletonBehaviour<SoundHandler>
         audio.clip = sound;
         audio.volume = 0.5f;
         audio.Play();
+        audio.outputAudioMixerGroup = soundMixer.FindMatchingGroups("Master")[0];
         yield return new WaitForSeconds(1f);
         Destroy(audio);
     }

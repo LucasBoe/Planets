@@ -20,7 +20,7 @@ public class LevelUI : MonoBehaviour
 
     internal void Setup(LevelData data)
     {
-        planetImage.sprite = planetSprites[UnityEngine.Random.Range(0, planetSprites.Length)];
+        //planetImage.sprite = planetSprites[UnityEngine.Random.Range(0, planetSprites.Length)];
         this.data = data;
         nameText.text = data.Name;
         checkmark.enabled = data.Finished;

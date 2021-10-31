@@ -9,8 +9,13 @@ public class ButtonFeedbackBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
 {
     [SerializeField] SpriteRenderer spriteRenderer;
 
+
+    Slider slider;
     Button button;
-    bool IsUiButton => button;
+    Toggle toggle;
+
+    Graphic targetGraphic;
+    bool IsUiElement => button || slider || toggle;
 
     bool isHovered = false;
     bool pointerIsDown = false;
@@ -19,6 +24,7 @@ public class ButtonFeedbackBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
 
     private void PointerDown()
     {
+        SoundHandler.Play(BaseSounds.UIClick);
         pointerIsDown = true;
     }
 
@@ -28,7 +34,6 @@ public class ButtonFeedbackBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
     }
     private void PointerEnter()
     {
-        SoundHandler.Play(BaseSounds.UIClick);
         isHovered = true;
     }
 
@@ -53,7 +58,7 @@ public class ButtonFeedbackBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
         else
             scale = Mathf.MoveTowards(scale, 1, speed*2);
 
-        (spriteRenderer ? spriteRenderer.transform : transform).localScale = Vector3.one * scale;
+        (targetGraphic ? targetGraphic.transform : (spriteRenderer ? spriteRenderer.transform : transform)).localScale = Vector3.one * scale;
     }
 
     private void Start()
@@ -69,9 +74,15 @@ public class ButtonFeedbackBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
         }
 
         button = GetComponent<Button>();
+        slider = GetComponent<Slider>();
+        toggle = GetComponent<Toggle>();
+
+        if (button) targetGraphic = button.targetGraphic;
+        if (slider) targetGraphic = slider.targetGraphic;
+        if (toggle) targetGraphic = toggle.targetGraphic;
     }
-    public void OnPointerDown(PointerEventData eventData) { if (IsUiButton) PointerDown(); }
-    public void OnPointerUp(PointerEventData eventData) { if (IsUiButton) PointerUp(); }
-    public void OnPointerEnter(PointerEventData eventData) { if (IsUiButton) PointerEnter(); }
-    public void OnPointerExit(PointerEventData eventData) { if (IsUiButton) PointerExit(); }
+    public void OnPointerDown(PointerEventData eventData) { if (IsUiElement) PointerDown(); }
+    public void OnPointerUp(PointerEventData eventData) { if (IsUiElement) PointerUp(); }
+    public void OnPointerEnter(PointerEventData eventData) { if (IsUiElement) PointerEnter(); }
+    public void OnPointerExit(PointerEventData eventData) { if (IsUiElement) PointerExit(); }
 }

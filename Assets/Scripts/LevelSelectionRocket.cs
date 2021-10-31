@@ -50,15 +50,16 @@ public class LevelSelectionRocket : MonoBehaviour
         (transform as RectTransform).anchoredPosition = IndexToPosition(indexToTeleportTo);
     }
 
-    IEnumerator MoveRoutine(Vector3 position)
+    IEnumerator MoveRoutine(Vector3 target)
     {
-        Vector3 positionBefore = (transform as RectTransform).anchoredPosition;
+        RectTransform rect = (transform as RectTransform);
+        Vector3 positionBefore = rect.anchoredPosition;
         float t = 1;
 
-        while (t > 0)
+        while (Vector2.Distance(rect.anchoredPosition, target) > 0.001f)
         {
             t -= Time.deltaTime;
-            (transform as RectTransform).anchoredPosition = Vector3.Lerp(position, positionBefore, t);
+            rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition, target, Time.deltaTime * 150f);
             yield return null;
         }
 
