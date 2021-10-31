@@ -48,7 +48,7 @@ MonoBehaviour:
     Layer:
       serializedVersion: 2
       m_Bits: 1024
-  - Color: {r: 0, g: 0.5188679, b: 0.1425952, a: 1}
+  - Color: {r: 0, g: 0.6698113, b: 0.5853284, a: 1}
     Layer:
       serializedVersion: 2
       m_Bits: 2048

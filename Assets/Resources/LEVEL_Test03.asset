@@ -17,3 +17,10 @@ MonoBehaviour:
   AstronautsMax: 2
   Finished: 0
   SceneInBuildIndex: 7
+  JustCameFromMenue: 0
+  Intro:
+    Text:
+    - In this mission you have to closely manouver around to orbiters.
+    - While doing so, feel free to help the other astronauts that failed at the mission
+    - Be aware that fly-bys can lead to a strong velocity boost. Utizlize that.
+    - Good Luck.

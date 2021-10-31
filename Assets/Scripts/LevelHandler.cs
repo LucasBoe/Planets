@@ -20,6 +20,12 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
             if (SceneManager.GetActiveScene().buildIndex == data.SceneInBuildIndex)
                 LevelData = data;
         }
+
+        if (LevelData.JustCameFromMenue)
+        {
+            LevelData.JustCameFromMenue = false;
+            IntroPlayer.Instance.PlayIntro(LevelData.Intro);
+        }
     }
 
     public void ResetLevel()

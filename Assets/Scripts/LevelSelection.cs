@@ -76,6 +76,7 @@ public class LevelSelection : MonoBehaviour
 
     internal void Play(LevelData data)
     {
+        data.JustCameFromMenue = true;
         SceneManager.LoadScene(data.SceneInBuildIndex);
     }
 }

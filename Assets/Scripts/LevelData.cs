@@ -10,4 +10,7 @@ public class LevelData : ScriptableObject
     public int Astronauts, AstronautsMax;
     public bool Finished;
     public int SceneInBuildIndex;
+
+    public bool JustCameFromMenue;
+    public IntroData Intro;
 }

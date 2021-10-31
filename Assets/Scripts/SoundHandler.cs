@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SoundHandler : SingletonBehaviour<SoundHandler>
 {
-    [SerializeField] AudioClip uiClick;
+    [SerializeField] AudioClip uiClick, radioOnOff;
 
     public static void Play(BaseSounds sound)
     {
@@ -14,6 +14,11 @@ public class SoundHandler : SingletonBehaviour<SoundHandler>
 
     private AudioClip EnumToClip(BaseSounds sound)
     {
+        switch (sound)
+        {
+            case BaseSounds.RadioOnOff:
+                return radioOnOff;
+        }
         return uiClick;
     }
 
@@ -30,5 +35,6 @@ public class SoundHandler : SingletonBehaviour<SoundHandler>
 
 public enum BaseSounds
 {
-    UIClick
+    UIClick,
+    RadioOnOff
 }
