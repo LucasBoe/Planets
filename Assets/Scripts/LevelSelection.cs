@@ -10,6 +10,8 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] RectTransform rectToTranslate;
     [SerializeField] LevelUI levelUIElementPrefab;
 
+    public static LevelData[] lds;
+
     List<LevelData> levelDatas;
     List<LevelUI> levelUIs;
 
@@ -17,6 +19,7 @@ public class LevelSelection : MonoBehaviour
     void Start()
     {
         int toHighlight = CreateUIElementsForAllLevels();
+
         if (levelUIs != null && levelUIs.Count > 0)
         {
             rectToTranslate.anchoredPosition = CalculateTranslationPositonForLevelUIElement(toHighlight);
@@ -28,7 +31,20 @@ public class LevelSelection : MonoBehaviour
 
     private int CreateUIElementsForAllLevels()
     {
-        var lds = Resources.LoadAll("", typeof(LevelData));
+        Debug.Log(lds == null);
+
+        if (lds == null)
+        {
+            var temp = Resources.LoadAll("", typeof(LevelData));
+            List<LevelData> td = new List<LevelData>();
+            foreach (LevelData data in temp)
+            {
+                td.Add(data);
+            }
+            lds = td.ToArray();
+        }
+
+        Debug.Log(lds == null);
 
         levelDatas = new List<LevelData>();
         levelUIs = new List<LevelUI>();
@@ -55,6 +71,19 @@ public class LevelSelection : MonoBehaviour
         }
 
         return toHighlight;
+    }
+
+    private int FindIndexToHighlight()
+    {
+        for (int i = 0; i < levelDatas.Count; i++)
+        {
+            if ((levelDatas[i] as LevelData).ComingFromThatScene)
+            {
+                return i;
+            }
+        }
+
+        return 0;
     }
 
     private LevelUI CreateLevelUIFor(LevelData data)

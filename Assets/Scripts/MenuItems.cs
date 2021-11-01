@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
+#if UNITY_EDITOR
 public class MenuItems
 {
     [MenuItem("Levels/Create Level Data from acitve Scene")]
@@ -41,3 +42,4 @@ public class MenuItems
         Selection.activeObject = newData;
     }
 }
+#endif
