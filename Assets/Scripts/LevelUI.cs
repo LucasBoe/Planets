@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LevelUI : MonoBehaviour
 {
     [SerializeField] LevelData data;
-    [SerializeField] Sprite[] planetSprites;
+    [SerializeField] Texture2D[] planetSprites;
 
     [SerializeField] CanvasGroup fokusVisuals;
     [SerializeField] Image planetImage;
@@ -20,7 +20,11 @@ public class LevelUI : MonoBehaviour
 
     internal void Setup(LevelData data)
     {
-        //planetImage.sprite = planetSprites[UnityEngine.Random.Range(0, planetSprites.Length)];
+        Color c = Color.HSVToRGB(UnityEngine.Random.Range(0f, 1f), 1, 1);
+        c.a = 0;
+        planetImage.material = new Material(planetImage.material);
+        planetImage.material.SetColor("tint", c);
+        planetImage.material.SetTexture("tex", PlanetDataHolder.Instance.planetTextures[UnityEngine.Random.Range(0, PlanetDataHolder.Instance.planetTextures.Length)]);
         this.data = data;
         nameText.text = data.Name;
         checkmark.enabled = data.Finished;
