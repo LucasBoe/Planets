@@ -38,8 +38,13 @@ public class LevelSelection : MonoBehaviour
         for (int i = 0; i < lds.Length; i++)
         {
             LevelData data = lds[i] as LevelData;
+
+            if (!data.Unlocked && i > 0 && (lds[i - 1] as LevelData).Finished)
+                data.Unlocked = true;
+
             levelDatas.Add(data);
             levelUIs.Add(CreateLevelUIFor(data));
+
 
             if (data.ComingFromThatScene)
             {

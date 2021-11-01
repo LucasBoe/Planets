@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Fly By
   Astronauts: 0
   AstronautsMax: 0
-  Finished: 1
+  Finished: 0
   SceneInBuildIndex: 2
   ComingFromThatScene: 0
   Intro:
@@ -24,3 +24,4 @@ MonoBehaviour:
     - The steeper you fly in, the steeper you come out.
     - If you want your path to be less curved, aim more towards the planet
     - Try it out!
+  Unlocked: 0

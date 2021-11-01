@@ -12,6 +12,7 @@ public class LevelUI : MonoBehaviour
 
     [SerializeField] CanvasGroup fokusVisuals;
     [SerializeField] Image planetImage;
+    [SerializeField] Transform lockDisplay;
     [SerializeField] Transform astronautDisplay;
     [SerializeField] Image checkmark;
     [SerializeField] TMP_Text nameText, astronautText;
@@ -31,6 +32,13 @@ public class LevelUI : MonoBehaviour
         astronautDisplay.gameObject.SetActive(data.AstronautsMax > 0);
         astronautText.text = data.Astronauts + " / " + data.AstronautsMax;
 
+        if (!data.Unlocked)
+        {
+            planetImage.color = new Color(1, 1, 1, 0.5f);
+            lockDisplay.gameObject.SetActive(true);
+            astronautDisplay.gameObject.SetActive(false);
+        }
+
         levelSelection = GetComponentInParent<LevelSelection>();
     }
 
@@ -46,6 +54,7 @@ public class LevelUI : MonoBehaviour
 
     internal void SetFokused(bool inFokus)
     {
-        fokusVisuals.gameObject.SetActive(inFokus);
+        if (data.Unlocked)
+            fokusVisuals.gameObject.SetActive(inFokus);
     }
 }

@@ -16,4 +16,5 @@ public class LevelData : ScriptableObject
 
     public IntroData Intro;
 
+    public bool Unlocked;
 }
