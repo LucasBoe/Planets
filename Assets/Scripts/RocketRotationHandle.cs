@@ -14,7 +14,7 @@ public class RocketRotationHandle : InWorldHandle
         if (PlayedBefore)
             transform.localPosition = settings.LookAtPos;
         else
-            transform.position = startCurve.GetDefaultLookAt();
+            transform.position = (Vector3)startCurve.GetDefaultLookAt() + offset;
     }
 
     public override void StartSimulation()

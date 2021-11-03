@@ -13,7 +13,7 @@ public class RocketPostionHandle : InWorldHandle
 
     public override void Init()
     {
-        transform.position = startCurve.WorldPositionToCurve(PlayedBefore ? settings.RocketPos : startCurve.GetCenter());
+        transform.position = (Vector3)startCurve.WorldPositionToCurve(PlayedBefore ? settings.RocketPos : (Vector3)startCurve.GetCenter()) + offset;
     }
 
     public override void StartSimulation()

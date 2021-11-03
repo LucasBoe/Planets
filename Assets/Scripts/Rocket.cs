@@ -43,11 +43,6 @@ public class Rocket : SimulationBehaviour
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90f);
             settings.StartForce += Input.GetAxis("Vertical");
             lineRenderer.SetPosition(1, new Vector3(0, settings.StartForce / 50, 1));
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Launch();
-            }
         }
         else
         {

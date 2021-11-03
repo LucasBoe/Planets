@@ -30,16 +30,17 @@ public class RocketStartCurve : SimulationBehaviour
         return Points[Points.Length / 2];
     }
 
-    public Vector3 GetCenter()
+    public Vector2 GetCenter()
     {
-        return (point1.position + point2.position) / 2;
+        Vector3 pos = (point1.position + point2.position) / 2;
+        return new Vector2(pos.x, pos.y);
     }
 
-    public Vector3 GetDefaultLookAt()
+    public Vector2 GetDefaultLookAt()
     {
-        Vector3 center = GetCenter();
-        Vector3 negativeLook = (curve.position - center);
-        return center - (negativeLook.normalized * Mathf.Clamp(negativeLook.magnitude, 30, 30));
+        Vector2 center = GetCenter();
+        Vector2 negativeLook = ((Vector2)curve.position - center);
+        return center - (negativeLook.normalized * 10);
     }
 
     private void OnDrawGizmos()

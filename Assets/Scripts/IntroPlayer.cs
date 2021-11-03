@@ -64,7 +64,7 @@ public class IntroPlayer : SingletonBehaviour<IntroPlayer>
             Hidden = false;
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
 
         int textIndex = 0;
         while (textIndex < texts.Length)
