@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef88de94c0816ed4aa9d61f42b90c657, type: 3}
   m_Name: RocketSettings
   m_EditorClassIdentifier: 
-  StartForce: 500
+  StartForce: 502.74683
   StartRotation: {x: 0, y: 0, z: 0, w: 0}
-  LookAtPos: {x: 0, y: 10, z: -5}
-  RocketPos: {x: 40.34841, y: 0.81061715, z: 0}
+  LookAtPos: {x: -20.839449, y: -0.8883362, z: -3}
+  RocketPos: {x: 32.82159, y: -14.499165, z: -2}
   previousPaths: []

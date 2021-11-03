@@ -40,7 +40,7 @@ public class RocketStartCurve : SimulationBehaviour
     {
         Vector2 center = GetCenter();
         Vector2 negativeLook = ((Vector2)curve.position - center);
-        return center - (negativeLook.normalized * 10);
+        return center - (negativeLook.normalized * 15);
     }
 
     private void OnDrawGizmos()
@@ -75,7 +75,10 @@ public class RocketStartCurve : SimulationBehaviour
     {
 
         Vector2 startPos = rocketHandle.transform.position;
-        Vector2 endPos = rotationHandle.transform.position;
+        Vector2 targetPos = rotationHandle.transform.position;
+        Vector2 endPos = startPos + (targetPos - startPos).normalized * 10;
+
+        
 
         if (Vector2.Distance(startPos, endPos) > (rocketHandle.Radius + rotationHandle.Radius + 0.25f))
         {
