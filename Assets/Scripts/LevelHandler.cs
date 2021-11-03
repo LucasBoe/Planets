@@ -9,6 +9,7 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
     public static bool Reset = false;
 
     [SerializeField] GameObject transitionPrefab;
+    [SerializeField] RocketSettings rocketSettings;
 
     public LevelData LevelData;
     public int Astronauts;
@@ -55,6 +56,7 @@ public class LevelHandler : SingletonBehaviour<LevelHandler>
 
     public void ReturnToLevelSelection()
     {
+        rocketSettings.previousPaths.Clear();
         LevelData.ComingFromThatScene = true;
         SceneManager.LoadScene("LevelSelection");
     }

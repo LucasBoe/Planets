@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7270500183520619541
+--- !u!1 &5907236962318306190
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7270500183520619543}
-  - component: {fileID: 7270500183520619540}
+  - component: {fileID: 5907236962318306188}
+  - component: {fileID: 5907236962318306191}
   m_Layer: 0
-  m_Name: LevelHandler
+  m_Name: PreviousPathDrawer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7270500183520619543
+--- !u!4 &5907236962318306188
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270500183520619541}
+  m_GameObject: {fileID: 5907236962318306190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,19 +31,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7270500183520619540
+--- !u!114 &5907236962318306191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270500183520619541}
+  m_GameObject: {fileID: 5907236962318306190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f6cc0579f1df14383428c41f067854, type: 3}
+  m_Script: {fileID: 11500000, guid: 1841d6910c6f38e43ab0ac6995718134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionPrefab: {fileID: 2116348195674874710, guid: 547f0a2a2863797419bcdf24dbf0b61d, type: 3}
-  rocketSettings: {fileID: 11400000, guid: f0b45db315bf8494cbb1395a1b79a125, type: 2}
-  LevelData: {fileID: 11400000, guid: 3c9b0a605d0f85d4a935696833daba51, type: 2}
-  Astronauts: 0
+  settings: {fileID: 11400000, guid: f0b45db315bf8494cbb1395a1b79a125, type: 2}
+  linePrefab: {fileID: 6387905575579661628, guid: d8c642bfac54a064788cd16ae7f18736, type: 3}
+  color: {r: 0.67058825, g: 0.11764706, b: 0.19215687, a: 1}

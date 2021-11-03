@@ -19,6 +19,7 @@ public class Rocket : SimulationBehaviour
     protected Rigidbody2D rigidbody2D;
 
     private FollowTransform trail;
+    List<Vector3> currentPath;
 
     public System.Action OnRocketLaunch;
     public System.Action OnRocketCrash;
@@ -52,7 +53,30 @@ public class Rocket : SimulationBehaviour
         {
             transform.up = rigidbody2D.velocity.normalized;
             rigidbody2D.AddForce(Vector2.up * motorForce * Time.deltaTime);
+
+            if (currentPath != null && currentPath.Count > 0)
+            {
+                Vector3 prev = currentPath[currentPath.Count - 1];
+
+                if (Vector2.Distance(prev, transform.position) > 1f)
+                    currentPath.Add(transform.position);
+            }
+            else
+            {
+                currentPath = new List<Vector3>();
+                currentPath.Add(transform.position);
+            }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Path current = new Path();
+        current.Points = currentPath.ToArray();
+        settings.previousPaths.Add(current);
+
+        while (settings.previousPaths.Count > 3)
+            settings.previousPaths.RemoveAt(0);
     }
 
     public void Launch()

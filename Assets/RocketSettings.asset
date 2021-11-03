@@ -16,3 +16,4 @@ MonoBehaviour:
   StartRotation: {x: 0, y: 0, z: 0, w: 0}
   LookAtPos: {x: 0, y: 10, z: -5}
   RocketPos: {x: 40.34841, y: 0.81061715, z: 0}
+  previousPaths: []
