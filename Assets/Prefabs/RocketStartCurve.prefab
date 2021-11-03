@@ -420,9 +420,9 @@ MonoBehaviour:
   AutoRadius: 1
   BaseRadius: 4
   visuals: {fileID: 2608240197487610480}
+  startCurve: {fileID: 585664827490109042}
   settings: {fileID: 11400000, guid: f0b45db315bf8494cbb1395a1b79a125, type: 2}
   offset: {x: 0, y: 0, z: -2}
-  limiter: {fileID: 585664827490109042}
   rocket: {fileID: 5365418740475667093}
 --- !u!114 &4875649192291843210
 MonoBehaviour:
@@ -516,6 +516,7 @@ MonoBehaviour:
   AutoRadius: 1
   BaseRadius: 2
   visuals: {fileID: 585664828399777147}
+  startCurve: {fileID: 585664827490109042}
   settings: {fileID: 11400000, guid: f0b45db315bf8494cbb1395a1b79a125, type: 2}
   offset: {x: 0, y: 0, z: -5}
 --- !u!58 &585664828399777145

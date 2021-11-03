@@ -21,11 +21,25 @@ public class RocketStartCurve : SimulationBehaviour
         Points = CalculateSmoothedPoints();
         rocketHandle = GetComponentInChildren<RocketPostionHandle>();
         rotationHandle = GetComponentInChildren<RocketRotationHandle>();
+        rocketHandle.Init();
+        rotationHandle.Init();
     }
 
     internal Vector2 GetMiddle()
     {
         return Points[Points.Length / 2];
+    }
+
+    public Vector3 GetCenter()
+    {
+        return (point1.position + point2.position) / 2;
+    }
+
+    public Vector3 GetDefaultLookAt()
+    {
+        Vector3 center = GetCenter();
+        Vector3 negativeLook = (curve.position - center);
+        return center - (negativeLook.normalized * Mathf.Clamp(negativeLook.magnitude, 30, 30));
     }
 
     private void OnDrawGizmos()
@@ -41,6 +55,8 @@ public class RocketStartCurve : SimulationBehaviour
 
             last = point;
         }
+
+        Gizmos.DrawSphere(GetDefaultLookAt(), 2f);
     }
 
     private void Update()

@@ -71,9 +71,12 @@ public class Rocket : SimulationBehaviour
 
     private void OnDestroy()
     {
-        Path current = new Path();
-        current.Points = currentPath.ToArray();
-        settings.previousPaths.Add(current);
+        if (currentPath != null)
+        {
+            Path current = new Path();
+            current.Points = currentPath.ToArray();
+            settings.previousPaths.Add(current);
+        }
 
         while (settings.previousPaths.Count > 3)
             settings.previousPaths.RemoveAt(0);

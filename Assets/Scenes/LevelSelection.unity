@@ -778,6 +778,7 @@ MonoBehaviour:
   rocket: {fileID: 1710810846}
   rectToTranslate: {fileID: 2010349181}
   levelUIElementPrefab: {fileID: 3037731332134402293, guid: 3df29bced631377498baff931bc20b95, type: 3}
+  rocketSettings: {fileID: 11400000, guid: f0b45db315bf8494cbb1395a1b79a125, type: 2}
 --- !u!1 &2010349180
 GameObject:
   m_ObjectHideFlags: 0

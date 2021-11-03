@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RocketPostionHandle : InWorldHandle
 {
-    [SerializeField] RocketStartCurve limiter;
     [SerializeField] Rocket rocket;
 
     protected override void OnEnable()
@@ -12,9 +11,9 @@ public class RocketPostionHandle : InWorldHandle
         base.OnEnable();
     }
 
-    private void Start()
+    public override void Init()
     {
-        transform.position = limiter.WorldPositionToCurve(settings.RocketPos);
+        transform.position = startCurve.WorldPositionToCurve(PlayedBefore ? settings.RocketPos : startCurve.GetCenter());
     }
 
     public override void StartSimulation()
@@ -27,6 +26,6 @@ public class RocketPostionHandle : InWorldHandle
 
     protected override Vector2 CalculateMousePosition()
     {
-         return limiter.WorldPositionToCurve(base.CalculateMousePosition());
+        return startCurve.WorldPositionToCurve(base.CalculateMousePosition());
     }
 }

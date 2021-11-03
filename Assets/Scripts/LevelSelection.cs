@@ -9,6 +9,7 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] LevelSelectionRocket rocket;
     [SerializeField] RectTransform rectToTranslate;
     [SerializeField] LevelUI levelUIElementPrefab;
+    [SerializeField] RocketSettings rocketSettings;
 
     public static LevelData[] lds;
 
@@ -139,6 +140,7 @@ public class LevelSelection : MonoBehaviour
 
     internal void Play(LevelData data)
     {
+        rocketSettings.previousPaths.Clear();
         SceneManager.LoadScene(data.SceneInBuildIndex);
     }
 }

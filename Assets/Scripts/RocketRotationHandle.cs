@@ -7,7 +7,14 @@ public class RocketRotationHandle : InWorldHandle
     protected override void OnEnable()
     {
         base.OnEnable();
-        transform.localPosition = settings.LookAtPos;
+    }
+
+    public override void Init()
+    {
+        if (PlayedBefore)
+            transform.localPosition = settings.LookAtPos;
+        else
+            transform.position = startCurve.GetDefaultLookAt();
     }
 
     public override void StartSimulation()

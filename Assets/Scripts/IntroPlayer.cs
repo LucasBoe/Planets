@@ -11,22 +11,34 @@ public class IntroPlayer : SingletonBehaviour<IntroPlayer>
 
     AudioSource noiseSource;
     TMP_Text textDisplay;
-    Button skipButton;
-    private bool skip;
+    Toggle skipToggle;
+    Button nextButton;
+    private bool next;
 
     private void Start()
     {
-        skipButton = GetComponentInChildren<Button>();
-        skipButton.onClick.AddListener(OnSkip);
-        skipButton.gameObject.SetActive(false);
+        nextButton = GetComponentInChildren<Button>();
+        nextButton.onClick.AddListener(OnNext);
+        nextButton.gameObject.SetActive(false);
+
+        skipToggle = GetComponentInChildren<Toggle>();
+        skipToggle.onValueChanged.AddListener(OnSkip);
+        skipToggle.isOn = false;
+
+
         textDisplay = GetComponentInChildren<TMP_Text>();
         noiseSource = GetComponent<AudioSource>();
         transform.localScale = Vector3.zero;
     }
 
-    private void OnSkip()
+    private void OnSkip(bool value)
     {
-        skip = true;
+        //
+    }
+
+    private void OnNext()
+    {
+        next = true;
     }
 
     internal void PlayIntro(IntroData intro)
@@ -60,24 +72,29 @@ public class IntroPlayer : SingletonBehaviour<IntroPlayer>
             SoundHandler.Play(BaseSounds.RadioOnOff);
             noiseSource.Play();
 
+            skipToggle.gameObject.SetActive(true);
+            skipToggle.isOn = true;
+
             string text = texts[textIndex];
             int charactersMax = text.Length;
             for (int charactersVisible = 0; charactersVisible < charactersMax; charactersVisible++)
             {
                 string newText = text.Substring(0, charactersVisible + 1) + "<alpha=#00>" + text.Substring(charactersVisible + 1, text.Length - charactersVisible - 1);
                 textDisplay.text = newText;
-                yield return new WaitForSeconds(GetPauseByCharacter(text[charactersVisible]));
+                yield return new WaitForSeconds(skipToggle.isOn ? GetPauseByCharacter(text[charactersVisible]) : 0f);
             }
+
+            skipToggle.gameObject.SetActive(false);
 
             noiseSource.Pause();
             SoundHandler.Play(BaseSounds.RadioOnOff);
-            skipButton.gameObject.SetActive(true);
+            nextButton.gameObject.SetActive(true);
 
-            while (skip == false)
+            while (next == false)
                 yield return null;
 
-            skipButton.gameObject.SetActive(false);
-            skip = false;
+            nextButton.gameObject.SetActive(false);
+            next = false;
             textIndex++;
         }
 

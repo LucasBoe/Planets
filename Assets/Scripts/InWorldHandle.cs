@@ -8,11 +8,12 @@ public class InWorldHandle : SimulationBehaviour
     public bool AutoRadius;
     public float BaseRadius;
     public float Radius => visuals.localScale.x * BaseRadius;
+    public bool PlayedBefore => settings.previousPaths != null && settings.previousPaths.Count > 0;
 
     [SerializeField] Transform visuals;
+    [SerializeField] protected RocketStartCurve startCurve;
     [SerializeField] protected RocketSettings settings;
     [SerializeField] protected Vector3 offset;
-
 
     protected Camera main;
 
@@ -20,6 +21,11 @@ public class InWorldHandle : SimulationBehaviour
     public Action OnPointerUp;
     public Action OnPointerEnter;
     public Action OnPointerExit;
+
+    public virtual void Init()
+    {
+
+    }
 
     protected virtual void OnEnable()
     {
