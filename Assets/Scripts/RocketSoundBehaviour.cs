@@ -34,9 +34,14 @@ public class RocketSoundBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = rocketBody.velocity.magnitude;
-        baseSpeedSource.pitch = speed / 10f;
-        inOrbitSource.volume = (speed - 10f) / 10f;
-        Debug.Log(speed);
+        if (rocketBody)
+        {
+            float speed = rocketBody.velocity.magnitude;
+            baseSpeedSource.pitch = speed / 10f;
+            inOrbitSource.volume = (speed - 10f) / 10f;
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 }

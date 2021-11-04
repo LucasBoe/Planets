@@ -25,8 +25,6 @@ public class Planet : SimulationBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         pointEffector2D = GetComponent<PointEffector2D>();
 
-        Debug.Log(pointEffector2D == null);
-
         pointEffector2D.enabled = false;
     }
 

@@ -32,8 +32,6 @@ public class LevelSelection : MonoBehaviour
 
     private int CreateUIElementsForAllLevels()
     {
-        Debug.Log(lds == null);
-
         if (lds == null)
         {
             var temp = Resources.LoadAll("", typeof(LevelData));
@@ -44,8 +42,6 @@ public class LevelSelection : MonoBehaviour
             }
             lds = td.ToArray();
         }
-
-        Debug.Log(lds == null);
 
         levelDatas = new List<LevelData>();
         levelUIs = new List<LevelUI>();

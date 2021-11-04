@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LEVEL_Basic_10
   m_EditorClassIdentifier: 
   Name: Test10
-  Astronauts: 3
+  Astronauts: 0
   AstronautsMax: 1
   Finished: 0
   SceneInBuildIndex: 3
