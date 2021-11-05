@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc927ae6becd1814189dda818b23401b, type: 3}
   m_Name: LEVEL_Basic_10
   m_EditorClassIdentifier: 
-  Name: Test10
+  Name: Outer Space
   Astronauts: 0
   AstronautsMax: 1
   Finished: 0

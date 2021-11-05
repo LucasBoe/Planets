@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc927ae6becd1814189dda818b23401b, type: 3}
   m_Name: LEVEL_Basic_01
   m_EditorClassIdentifier: 
-  Name: Test01
+  Name: Twins
   Astronauts: 0
   AstronautsMax: 0
   Finished: 0
