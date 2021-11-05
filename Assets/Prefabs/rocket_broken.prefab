@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 12935439}
   - component: {fileID: 12935438}
   - component: {fileID: 1206546486143183001}
+  - component: {fileID: 22212332584907078}
   m_Layer: 0
   m_Name: explosion
   m_TagString: Untagged
@@ -4958,6 +4959,102 @@ MonoBehaviour:
   - {fileID: 873491393286297881}
   - {fileID: 873491392356325038}
   - {fileID: 873491393069543916}
+--- !u!82 &22212332584907078
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12935437}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: b4fd075a16ba6bc42bfb75e5c4fb516d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 3bf8ebcc8887d5f48a2a6c148f19790a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &873491392124002991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,7 +5067,7 @@ GameObject:
   - component: {fileID: 873491392124002987}
   - component: {fileID: 873491392124002986}
   - component: {fileID: 873491392124002989}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rocket_part1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4984,13 +5081,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873491392124002991}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07999992, y: -0.52299976, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.021334046, w: 0.9997724}
+  m_LocalPosition: {x: 0.21, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 873491392989514150}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.445}
 --- !u!212 &873491392124002987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5053,8 +5150,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 3.40865
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -5080,7 +5177,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.42, y: 3.39}
+    oldSize: {x: 1.58, y: 3.48}
     newSize: {x: 1.42, y: 3.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5140,7 +5237,7 @@ GameObject:
   - component: {fileID: 873491392356325037}
   - component: {fileID: 873491392356325036}
   - component: {fileID: 873491392356325039}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rocket_part3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5223,8 +5320,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.7036
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -5250,7 +5347,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7, y: 1.78}
+    oldSize: {x: 0.86, y: 1.78}
     newSize: {x: 0.7, y: 1.78}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5292,7 +5389,7 @@ GameObject:
   - component: {fileID: 873491392786288674}
   - component: {fileID: 873491392786288677}
   - component: {fileID: 873491392786288676}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rocket_part0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5307,7 +5404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873491392786288678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.19, y: -0.25, z: 0}
+  m_LocalPosition: {x: -0.36, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 873491392989514150}
@@ -5375,8 +5472,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 1.9672499
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -5402,7 +5499,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.29, y: 2.84}
+    oldSize: {x: 1.29, y: 3.06}
     newSize: {x: 1.29, y: 2.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5494,7 +5591,7 @@ GameObject:
   - component: {fileID: 873491393069543915}
   - component: {fileID: 873491393069543914}
   - component: {fileID: 873491393069543917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rocket_part4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5577,8 +5674,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.94409996
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -5604,7 +5701,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.31, y: 1.16}
+    oldSize: {x: 1.15, y: 1.23}
     newSize: {x: 1.31, y: 1.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5638,7 +5735,7 @@ GameObject:
   - component: {fileID: 873491393286297876}
   - component: {fileID: 873491393286297879}
   - component: {fileID: 873491393286297878}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rocket_part2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5721,8 +5818,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.72655
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -5748,7 +5845,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.69, y: 1.81}
+    oldSize: {x: 0.61, y: 1.78}
     newSize: {x: 0.69, y: 1.81}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
